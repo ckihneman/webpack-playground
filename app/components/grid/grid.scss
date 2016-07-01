@@ -4,11 +4,16 @@
 // no breakpoint handling for now
 $max-width: 1200px;
 $gutter: 15px;
-$sizes: (20, 25, 33, 50, 66, 75, 100);
+$sizes: (
+	'20': 20%,
+	'25': 25%,
+	'33': 33.3333333333%,
+	'50': 50%,
+	'66': 66.6666666666%,
+	'75': 75%,
+	'100': 100%,
+);
 
-/*
- *
- */
 
 .grid {
 	@include clearfix;
@@ -37,18 +42,9 @@ $sizes: (20, 25, 33, 50, 66, 75, 100);
 	clear: both;
 }
 
-@each $size in $sizes {
+@each $size, $value in $sizes {
 	.g--#{$size} {
-
-		// this is hacky, i know...
-		@if $size == 33 {
-			width: 33.333333333%;
-		} @else if $size == 66 {
-			width: 66.666666666%;
-		} @else {
-			width: percentage($size / 100);
-		}
-
+		width: $value;
 		float: left;
 		padding-left: $gutter;
 		padding-right: $gutter;
