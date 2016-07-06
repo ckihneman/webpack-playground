@@ -2,6 +2,13 @@
  * Grid Utility Classes
  */
 
+// Base grid gutters
+%u-grid-unit-base {
+	position: relative;
+	padding-left: grid('gutter');
+	padding-right: grid('gutter');
+}
+
 // Reset gutters
 .u-gutter-reset {
 	@include clearfix;
