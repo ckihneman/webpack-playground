@@ -1,59 +1,31 @@
+// Global helpers
 @import '../../tools/helpers';
 
-// proof of concept grid system
-// no breakpoint handling for now
-$max-width: 1200px;
-$gutter: 15px;
-$sizes: (20, 25, 33, 50, 66, 75, 100);
+// Grid settings
+@import './grid-settings';
 
-/*
- *
- */
+// Grid helper functions and mixins
+@import './grid-helpers';
+
+// Grid utility classes
+@import './grid-utilities';
+
 
 .grid {
 	@include clearfix;
 
-	max-width: $max-width;
+	max-width: grid('max-width');
 	margin-left: auto;
 	margin-right: auto;
-
-	// visualize bounding box
-	border: 1px dotted red;
 }
 
-.g--gutter {
-	padding-left: $gutter;
-	padding-right: $gutter;
-}
+@include make-grid-set(base, gutters);
+@include make-grid-set(base, width);
 
-.g--gutter-reset {
-	@include clearfix;
+@each $breakpoint, $browserWidth in grid('breakpoints') {
+	@include make-grid-set($breakpoint, gutters);
 
-	margin-left: -$gutter;
-	margin-right: -$gutter;
-}
-
-.g--clear {
-	clear: both;
-}
-
-@each $size in $sizes {
-	.g--#{$size} {
-
-		// this is hacky, i know...
-		@if $size == 33 {
-			width: 33.333333333%;
-		} @else if $size == 66 {
-			width: 66.666666666%;
-		} @else {
-			width: percentage($size / 100);
-		}
-
-		float: left;
-		padding-left: $gutter;
-		padding-right: $gutter;
-
-		// visualize bounding box
-		border: 1px dotted blue;
+	@media (min-width: $browserWidth) {
+		@include make-grid-set($breakpoint, width);
 	}
 }

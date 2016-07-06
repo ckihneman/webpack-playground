@@ -1,0 +1,55 @@
+/*
+ * Grid Helper Functions and Mixins
+ */
+
+/*
+ * Grid settings helper
+ */
+@function grid($key) {
+	@if map-has-key($grid, $key) {
+		@return map-get($grid, $key);
+	}
+	@error "Grid key `#{$key}` not found."
+}
+
+/*
+ * Get grid unit name
+ *
+ * @example get-grid-unit-name(50, md);
+ * @return .g--50@md
+ */
+@function get-grid-unit-name($size, $breakpoint) {
+	$name: #{grid('unit-prefix') + $size};
+	@if $breakpoint != base {
+		$name: #{$name + \@ + $breakpoint};
+	}
+	@return $name;
+}
+
+/*
+ * Make a set of grid units
+ *
+ * @example @include make-grid-set(sm);
+ */
+@mixin make-grid-set($breakpoint, $type) {
+	@each $size, $width in grid('units') {
+		$unitClassName: get-grid-unit-name($size, $breakpoint);
+		@include make-grid-unit($unitClassName, $width, $type);
+	}
+}
+
+/*
+ * Make a grid unit
+ *
+ * @example @include make-grid(g--50@md, .25, width);
+ */
+@mixin make-grid-unit($unitClassName, $width, $type) {
+	.#{$unitClassName} {
+		@if $type == width {
+			width: percentage($width);
+			float: left;
+		} @else if $type == gutters {
+			@extend %u-gutter;
+		}
+	}
+}
