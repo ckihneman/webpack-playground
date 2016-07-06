@@ -11,21 +11,29 @@
 @import './grid-utilities';
 
 
+// Max width, centered container
 .grid {
 	@include clearfix;
 
+	position: relative;
 	max-width: grid('max-width');
 	margin-left: auto;
 	margin-right: auto;
 }
 
+// Make base, non-responsive grid units
 @include make-grid-set(base, gutters);
 @include make-grid-set(base, width);
+@include make-grid-set(base, push);
+@include make-grid-set(base, pull);
 
+// Make responsive grid units
 @each $breakpoint, $browserWidth in grid('breakpoints') {
 	@include make-grid-set($breakpoint, gutters);
 
 	@media (min-width: $browserWidth) {
 		@include make-grid-set($breakpoint, width);
+		@include make-grid-set($breakpoint, push);
+		@include make-grid-set($breakpoint, pull);
 	}
 }

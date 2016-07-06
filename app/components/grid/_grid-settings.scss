@@ -16,6 +16,8 @@ $grid: (
 	'max-width': 1200px,
 	'gutter': 15px,
 	'unit-prefix': 'g--',
+	'push-prefix': 'u-push-',
+	'pull-prefix': 'u-pull-',
 	'units': (
 		5: 1 / 20,
 		10: 1 / 10,

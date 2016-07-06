@@ -18,8 +18,16 @@
  * @example get-grid-unit-name(50, md);
  * @return .g--50@md
  */
-@function get-grid-unit-name($size, $breakpoint) {
-	$name: #{grid('unit-prefix') + $size};
+@function get-grid-unit-name($size, $breakpoint, $type) {
+	$name: null;
+	@if $type == push {
+		$name: grid('push-prefix');
+	} @else if $type == pull {
+		$name: grid('pull-prefix');
+	} @else {
+		$name: grid('unit-prefix');
+	}
+	$name: #{$name + $size};
 	@if $breakpoint != base {
 		$name: #{$name + \@ + $breakpoint};
 	}
@@ -33,7 +41,7 @@
  */
 @mixin make-grid-set($breakpoint, $type) {
 	@each $size, $width in grid('units') {
-		$unitClassName: get-grid-unit-name($size, $breakpoint);
+		$unitClassName: get-grid-unit-name($size, $breakpoint, $type);
 		@include make-grid-unit($unitClassName, $width, $type);
 	}
 }
@@ -45,11 +53,18 @@
  */
 @mixin make-grid-unit($unitClassName, $width, $type) {
 	.#{$unitClassName} {
+		$percent: percentage($width);
 		@if $type == width {
-			width: percentage($width);
+			width: $percent;
 			float: left;
 		} @else if $type == gutters {
 			@extend %u-grid-unit-base;
+		} @else if $type == push {
+			left: $percent;
+		} @else if $type == pull {
+			right: $percent;
+		} @else {
+			@error "make-grid-unit $type of `#{$type}` not found";
 		}
 	}
 }
