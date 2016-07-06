@@ -22,11 +22,10 @@ module.exports = {
 			},
 			{
 				test:   /\.scss$/,
-				// loader: ExtractTextPlugin.extract(
-				// 	"style",
-				// 	"css!sass"
-				// ),
-				loader: ExtractTextPlugin.extract('style-loader', ['css-loader', 'postcss-loader', 'sass-loader']),
+				loader: ExtractTextPlugin.extract(
+					'style-loader',
+					['css-loader', 'postcss-loader', 'sass-loader']
+				),
 				// loader: "style-loader!css-loader!postcss-loader!sass-loader"
 			},
 		]
