@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Grid Demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+	<!-- Place favicon.ico in the root directory -->
+
+	<link rel="stylesheet" href="dist/styles.css">
+</head>
+<body>
+<!--[if lt IE 8]>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="grid u-gutter">
+	<h1>
+		# Grid Demo
+	</h1>
+	<h2>
+		## Responsive Grid Units
+	</h2>
+</div>
+
+<div class="grid">
+	<div class="g--25@md g--50@sm">
+		<p>
+			g--25@md g--50@sm
+		</p>
+	</div>
+	<div class="g--25@md g--50@sm">
+		<p>
+			g--25@md g--50@sm
+		</p>
+	</div>
+	<div class="g--50@md g--100@sm">
+		<p>
+			g--50@md
+		</p>
+		<div class="u-gutter-reset">
+			<div class="g--50@md">
+				<p>
+					g--50@md, nested in g--50@md
+				</p>
+			</div>
+			<div class="g--50@md  u-gutter-none">
+				<p>
+					g--50@md, nested in g--50@md, gutter none
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="g--25@md g--50@sm">
+		<p>
+			g--25@md g--50@sm
+		</p>
+	</div>
+	<div class="g--25@md g--50@sm">
+		<p>
+			g--25@md g--50@sm
+		</p>
+	</div>
+</div>
+
+<br>
+
+<div class="grid u-gutter">
+	<h2>
+		## Non-responsive Grid Units
+	</h2>
+</div>
+
+<br>
+
+<div class="grid">
+	<div class="g--50  u-gutter-none">
+		<p>
+			half of page, no gutter
+		</p>
+	</div>
+	<div class="g--50  u-gutter-none">
+		<p>
+			half of page, no gutter
+		</p>
+	</div>
+</div>
+
+<br>
+
+<div class="grid  u-gutter">
+	<p>
+		full width content
+	</p>
+</div>
+
+<br>
+
+<div class="grid  u-gutter">
+	<p>
+		full width content, content below in same grid unit
+	</p>
+
+	<div class="u-gutter-reset">
+		<div class="g--50">
+			<p>
+				half of page, gutter reset
+			</p>
+		</div>
+
+		<div class="g--50">
+			<p>
+				half of page, gutter reset
+			</p>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="grid">
+
+	<div class="g--100">
+		<p>
+			full content width
+		</p>
+	</div>
+
+	<div class="g--50">
+		<p>
+			half of page
+		</p>
+
+		<div class="u-gutter-reset">
+			<div class="g--50">
+				<p>
+					quarter of page, nested
+				</p>
+			</div>
+
+			<div class="g--50">
+				<p>
+					quarter of page, nested
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="g--25">
+		<p>
+			quarter of page
+		</p>
+	</div>
+
+	<div class="g--25">
+		<p>
+			quarter of page
+		</p>
+	</div>
+
+	<div class="g--50  u-clear">
+		<p>
+			half of page, cleared
+		</p>
+	</div>
+
+	<div class="g--50">
+		<p>
+			half of page
+		</p>
+	</div>
+
+	<div class="g--20  u-clear">
+		<p>
+			fifth of page
+		</p>
+	</div>
+	<div class="g--20">
+		<p>
+			fifth of page
+		</p>
+	</div>
+	<div class="g--20">
+		<p>
+			fifth of page
+		</p>
+	</div>
+	<div class="g--20">
+		<p>
+			fifth of page
+		</p>
+	</div>
+	<div class="g--20">
+		<p>
+			fifth of page
+		</p>
+	</div>
+
+	<div class="g--50  u-clear">
+		<p>
+			half of page
+		</p>
+	</div>
+	<div class="g--50">
+		<p>
+			half of page
+		</p>
+	</div>
+	<div class="g--50">
+		<p>
+			half of page
+		</p>
+	</div>
+
+	<div class="g--25">
+		<p>
+			quarter of page
+		</p>
+	</div>
+	<div class="g--25">
+		<p>
+			quarter of page
+		</p>
+	</div>
+
+	<div class="g--33  u-clear">
+		<p>
+			third of page
+		</p>
+	</div>
+	<div class="g--33">
+		<p>
+			third of page
+		</p>
+	</div>
+	<div class="g--33">
+		<p>
+			third of page
+		</p>
+	</div>
+
+	<div class="g--66  u-clear">
+		<p>
+			two-thirds of page
+		</p>
+	</div>
+	<div class="g--33">
+		<p>
+			third of page
+		</p>
+	</div>
+
+	<div class="g--33  u-clear">
+		<p>
+			third of page
+		</p>
+	</div>
+	<div class="g--66">
+		<p>
+			two-thirds of page
+		</p>
+	</div>
+
+</div>
+
+<script src="dist/bundle.js"></script>
+
+</body>
+</html>

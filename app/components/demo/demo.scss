@@ -1,0 +1,22 @@
+/*
+ * Demo helpers
+ */
+
+// For gutter visualization
+h1,
+h2,
+p {
+	background-color: #eee;
+	margin: 0;
+	padding: 10px 0;
+}
+
+// visualize grid bounding box
+.grid {
+	border: 1px dotted red;
+}
+
+// visualize grid unit bounding box
+[class*="g--"] {
+	border: 1px dotted blue;
+}
